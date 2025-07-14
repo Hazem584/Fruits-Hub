@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_e_commerce/core/helper/spacing.dart';
+import 'package:fruits_e_commerce/core/theming/styles.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem({
@@ -13,7 +14,7 @@ class PageViewItem extends StatelessWidget {
   });
   final String image, backgroundImage;
   final Widget title;
-  final String subTitle;
+  final Widget subTitle;
   final bool isVisble;
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,10 @@ class PageViewItem extends StatelessWidget {
                   visible: isVisble,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Text("تخط"),
+                    child: Text(
+                      "تخط",
+                      style: TextStyles.font13lighterGraySemiBold,
+                    ),
                   ),
                 ),
               ],
@@ -49,7 +53,7 @@ class PageViewItem extends StatelessWidget {
           verticalSpace(24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(subTitle, textAlign: TextAlign.center),
+            child: subTitle,
           ),
         ],
       ),

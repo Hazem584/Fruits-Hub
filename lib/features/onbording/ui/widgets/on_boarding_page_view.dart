@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce/core/helper/spacing.dart';
+import 'package:fruits_e_commerce/core/theming/styles.dart';
 import 'package:fruits_e_commerce/core/utils/app_images.dart';
 import 'package:fruits_e_commerce/features/onbording/ui/widgets/page_view_item.dart';
 
@@ -12,18 +14,38 @@ class OnBoardingPageView extends StatelessWidget {
       controller: pageController,
       children: [
         PageViewItem(
-          isVisble: (pageController.hasClients ? pageController.page!.round()==0 : false),
+          isVisble: (pageController.hasClients
+              ? pageController.page!.round() == 0
+              : false),
           image: Assets.imagesPageViewItem1Image,
           backgroundImage: Assets.imagesPageViewItem1Background,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text("مرحبا بكم في"), Text("Fruit"), Text("HUB")],
+            children: [
+              Text("مرحبًا بك في", style: TextStyles.font23BlackBold),
+              horizontalSpace(5),
+              Text(
+                "HUB",
+                style: TextStyles.font23BlackBold.copyWith(
+                  color: Colors.orange.shade400,
+                ),
+              ),
+              Text(
+                "Fruit",
+                style: TextStyles.font23BlackBold.copyWith(color: Colors.green),
+              ),
+            ],
           ),
-          subTitle:
-              "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.",
+          subTitle: Text(
+            "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.",
+            textAlign: TextAlign.center,
+            style: TextStyles.font13lightGraySemiBold,
+          ),
         ),
         PageViewItem(
-          isVisble:(pageController.hasClients ? pageController.page!.round()==1 : false),
+          isVisble: (pageController.hasClients
+              ? pageController.page!.round() == 1
+              : false),
           image: Assets.imagesPageViewItem2Image,
           backgroundImage: Assets.imagesPageViewItem2Background,
           title: Row(
@@ -42,8 +64,11 @@ class OnBoardingPageView extends StatelessWidget {
               ),
             ],
           ),
-          subTitle:
-              "نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية",
+          subTitle: Text(
+            "نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية",
+            textAlign: TextAlign.center,
+            style: TextStyles.font13lightGraySemiBold,
+          ),
         ),
       ],
     );

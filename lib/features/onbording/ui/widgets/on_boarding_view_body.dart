@@ -66,7 +66,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             horizontalPadding: 48,
           ),
         ),
-        verticalSpace(43),
+        verticalSpace(38),
       ],
     );
   }
