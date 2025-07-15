@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_e_commerce/core/helper/spacing.dart';
 import 'package:fruits_e_commerce/core/theming/app_colors.dart';
 import 'package:fruits_e_commerce/core/widgets/app_text_button.dart';
+import 'package:fruits_e_commerce/features/login/ui/login_view.dart';
 import 'package:fruits_e_commerce/features/onbording/ui/widgets/on_boarding_page_view.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
@@ -59,7 +60,9 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             buttonHeight: 65.h,
             buttonText: "ابدأ الان",
             textStyle: TextStyle(color: Colors.white),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, LoginView.routeName);
+            },
             borderRadius: 16,
             backgroundColor: AppColors.primaryColor,
             verticalPadding: 15,
