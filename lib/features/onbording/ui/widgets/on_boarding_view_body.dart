@@ -2,7 +2,9 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_e_commerce/core/helper/spacing.dart';
+import 'package:fruits_e_commerce/core/services/shared_preferences_singleton.dart';
 import 'package:fruits_e_commerce/core/theming/app_colors.dart';
+import 'package:fruits_e_commerce/core/utils/constants.dart';
 import 'package:fruits_e_commerce/core/widgets/app_text_button.dart';
 import 'package:fruits_e_commerce/features/login/ui/login_view.dart';
 import 'package:fruits_e_commerce/features/onbording/ui/widgets/on_boarding_page_view.dart';
@@ -61,6 +63,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             buttonText: "ابدأ الان",
             textStyle: TextStyle(color: Colors.white),
             onPressed: () {
+              Prefs.setBool(KIsOnBoardingViewSeen, true);
               Navigator.pushReplacementNamed(context, LoginView.routeName);
             },
             borderRadius: 16,

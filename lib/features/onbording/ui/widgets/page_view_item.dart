@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_e_commerce/core/helper/spacing.dart';
+import 'package:fruits_e_commerce/core/services/shared_preferences_singleton.dart';
 import 'package:fruits_e_commerce/core/theming/styles.dart';
+import 'package:fruits_e_commerce/core/utils/constants.dart';
 import 'package:fruits_e_commerce/features/login/ui/login_view.dart';
 
 class PageViewItem extends StatelessWidget {
@@ -40,6 +42,7 @@ class PageViewItem extends StatelessWidget {
                   visible: isVisible,
                   child: GestureDetector(
                     onTap: () {
+                      Prefs.setBool(KIsOnBoardingViewSeen, true);
                       Navigator.pushReplacementNamed(context, LoginView.routeName);
                     },
                     child: Padding(
