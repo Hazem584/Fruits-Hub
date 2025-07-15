@@ -20,6 +20,7 @@ class FruitHub extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
+          theme: ThemeData(fontFamily: 'Cairo'),
           debugShowCheckedModeBanner: false,
           locale: const Locale('ar'),
           localizationsDelegates: const [
