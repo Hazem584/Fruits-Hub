@@ -10,12 +10,12 @@ class PageViewItem extends StatelessWidget {
     required this.backgroundImage,
     required this.title,
     required this.subTitle,
-    required this.isVisble,
+    required this.isVisible,
   });
   final String image, backgroundImage;
   final Widget title;
   final Widget subTitle;
-  final bool isVisble;
+  final bool isVisible;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,7 +36,7 @@ class PageViewItem extends StatelessWidget {
                   child: SvgPicture.asset(image),
                 ),
                 Visibility(
-                  visible: isVisble,
+                  visible: isVisible,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
