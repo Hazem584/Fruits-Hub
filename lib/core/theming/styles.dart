@@ -23,4 +23,22 @@ class TextStyles {
     color: AppColors.lighterGray,
     fontFamily: 'Cairo',
   );
+  static TextStyle font19BlackBold = TextStyle(
+    fontSize: 19.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.black,
+    fontFamily: 'Cairo',
+  );
+  static TextStyle font13lighterGrayBold = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.lighterGray,
+    fontFamily: 'Cairo',
+  );
+  static TextStyle font13BlackSemiBold = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: Colors.black,
+    fontFamily: 'Cairo',
+  );
 }
