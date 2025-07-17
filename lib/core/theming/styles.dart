@@ -41,4 +41,22 @@ class TextStyles {
     color: Colors.black,
     fontFamily: 'Cairo',
   );
+  static TextStyle font13lightGreenSemiBold = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: AppColors.lightGreen,
+    fontFamily: 'Cairo',
+  );
+  static TextStyle font15WhiteBold = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.white,
+    fontFamily: 'Cairo',
+  );
+    static TextStyle font13PrimaryColorSemiBold = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: AppColors.primaryColor,
+    fontFamily: 'Cairo',
+  );
 }
