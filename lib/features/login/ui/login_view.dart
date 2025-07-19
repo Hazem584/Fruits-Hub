@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_e_commerce/core/theming/styles.dart';
 import 'package:fruits_e_commerce/core/widgets/app_bar.dart';
 import 'package:fruits_e_commerce/features/login/widgets/login_view_body.dart';
 

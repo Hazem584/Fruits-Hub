@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_e_commerce/core/helper/spacing.dart';
@@ -81,7 +80,7 @@ class LoginViewBody extends StatelessWidget {
             buttonText: 'تسجيل دخول',
             textStyle: TextStyles.font15WhiteBold,
             buttonWidth: 300.w,
-            buttonHeight: 65.h,
+            buttonHeight: 63.h,
             backgroundColor: AppColors.primaryColor,
             onPressed: () {
               // Handle login action

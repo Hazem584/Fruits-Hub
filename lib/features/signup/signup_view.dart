@@ -8,10 +8,8 @@ class SignupView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: "حساب جديد"),
-      body: SingleChildScrollView(
-        child: SignupViewBody(),
-      ),
-      );
+      appBar: buildAppBar(context: context, title: "حساب جديد"),
+      body: SingleChildScrollView(child: SignupViewBody()),
+    );
   }
 }

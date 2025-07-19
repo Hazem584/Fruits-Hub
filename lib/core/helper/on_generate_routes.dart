@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce/features/login/ui/login_view.dart';
 import 'package:fruits_e_commerce/features/onbording/ui/screen/on_bording_view.dart';
 import 'package:fruits_e_commerce/features/signup/signup_view.dart' show SignupView;
-import 'package:fruits_e_commerce/generated/l10n.dart';
 
 import '../../features/splash/ui/screen/splash_view.dart';
 

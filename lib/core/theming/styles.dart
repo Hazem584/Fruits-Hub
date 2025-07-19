@@ -19,7 +19,7 @@ class TextStyles {
   );
   static TextStyle font13lighterGraySemiBold = TextStyle(
     fontSize: 13.sp,
-    fontWeight: FontWeightHelper.normal,
+    fontWeight: FontWeightHelper.semiBold,
     color: AppColors.lighterGray,
     fontFamily: 'Cairo',
   );
@@ -53,13 +53,13 @@ class TextStyles {
     color: Colors.white,
     fontFamily: 'Cairo',
   );
-    static TextStyle font13PrimaryColorSemiBold = TextStyle(
+  static TextStyle font13PrimaryColorSemiBold = TextStyle(
     fontSize: 13.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: AppColors.primaryColor,
     fontFamily: 'Cairo',
   );
-      static TextStyle font16BlackSemiBold = TextStyle(
+  static TextStyle font16BlackSemiBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: Colors.black,
