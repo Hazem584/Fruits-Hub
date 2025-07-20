@@ -1,25 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_e_commerce/core/helper/spacing.dart';
 import 'package:fruits_e_commerce/core/theming/app_colors.dart';
 import 'package:fruits_e_commerce/core/theming/styles.dart';
 import 'package:fruits_e_commerce/core/widgets/app_text_button.dart';
 import 'package:fruits_e_commerce/core/widgets/app_text_form_filed.dart';
+import 'package:fruits_e_commerce/features/signup/logic/signup_cubit.dart';
 import 'package:fruits_e_commerce/features/signup/widgets/already_have_an_account.dart';
 import 'package:fruits_e_commerce/features/signup/widgets/terms_and_conditions.dart';
 
-class SignupViewBody extends StatelessWidget {
+class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
 
   @override
+  State<SignupViewBody> createState() => _SignupViewBodyState();
+}
+
+class _SignupViewBodyState extends State<SignupViewBody> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  late String name, password, email;
+
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+      child: Form(
+        key: formKey,
+        autovalidateMode: autovalidateMode,
         child: Column(
+          mainAxisSize: MainAxisSize.min, // This is crucial!
           children: [
             verticalSpace(24),
             AppTextFormFiled(
+              onSaved: (value) {
+                name = value!;
+              },
               hintText: "الاسم كامل",
               backgroundColor: Color(0xFFF9FAFA),
               hintStyle: TextStyles.font13lighterGrayBold,
@@ -40,6 +57,9 @@ class SignupViewBody extends StatelessWidget {
             ),
             verticalSpace(15),
             AppTextFormFiled(
+              onSaved: (value) {
+                email = value!;
+              },
               hintText: 'البريد الإلكتروني',
               backgroundColor: Color(0xFFF9FAFA),
               hintStyle: TextStyles.font13lighterGrayBold,
@@ -60,6 +80,9 @@ class SignupViewBody extends StatelessWidget {
             ),
             verticalSpace(15),
             AppTextFormFiled(
+              onSaved: (value) {
+                password = value!;
+              },
               isObscureText: true,
               suffixIcon: Icon(Icons.visibility, color: AppColors.lightGray),
               hintText: 'كلمة المرور',
@@ -91,16 +114,26 @@ class SignupViewBody extends StatelessWidget {
               buttonHeight: 63.h,
               backgroundColor: AppColors.primaryColor,
               onPressed: () {
-                // Handle login action
+                if (formKey.currentState!.validate()) {
+                  formKey.currentState!.save();
+                  context.read<SignupCubit>().createUserWithEmailAndPassword(
+                    email: email,
+                    password: password,
+                    name: name,
+                  );
+                } else {
+                  setState(() {
+                    autovalidateMode = AutovalidateMode.always;
+                  });
+                }
               },
             ),
             verticalSpace(20),
             AlreadyHaveAnAccount(),
+            verticalSpace(20), // Add some bottom spacing
           ],
         ),
       ),
     );
   }
 }
-
-

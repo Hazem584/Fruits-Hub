@@ -16,6 +16,7 @@ class AppTextFormFiled extends StatelessWidget {
   final Color? backgroundColor;
   final TextEditingController? controller;
   final Function(String?)? validator;
+  final void Function(String?)? onSaved;
 
   const AppTextFormFiled({
     super.key,
@@ -30,6 +31,7 @@ class AppTextFormFiled extends StatelessWidget {
     this.backgroundColor,
     this.controller,
     this.validator,
+    this.onSaved,
   });
 
   @override
@@ -37,6 +39,7 @@ class AppTextFormFiled extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: TextFormField(
+        onSaved: onSaved,
         controller: controller,
         decoration: InputDecoration(
           isDense: true,
@@ -78,7 +81,10 @@ class AppTextFormFiled extends StatelessWidget {
         obscureText: isObscureText ?? false,
         style: inputTextStyle ?? TextStyles.font13BlackSemiBold,
         validator: (value) {
-          return validator!(value); // Call the validator function
+          if (value == null || value.isEmpty) {
+            return 'هذا الحقل مطلوب';
+          }
+          return null;
         },
       ),
     );

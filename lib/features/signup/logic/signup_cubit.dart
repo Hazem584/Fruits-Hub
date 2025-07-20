@@ -17,9 +17,9 @@ class SignupCubit extends Cubit<SignupState> {
   }) async {
     emit(SignupLoading());
     final result = await authRepo.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
-      name: name,
+      email,
+      password,
+      name,
     );
     result.fold(
       (failure) => emit(SignupError(message: failure.message)),

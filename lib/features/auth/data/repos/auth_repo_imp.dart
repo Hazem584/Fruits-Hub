@@ -11,11 +11,11 @@ class AuthRepoImp extends AuthRepo {
 
   AuthRepoImp({required this.firebaseAuthServices});
   @override
-  Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword({
-    required String email,
-    required String password,
-    required String name,
-  }) async {
+  Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
+    String email,
+    String password,
+    String name,
+  ) async {
     try {
       var user = await firebaseAuthServices.createUserWithEmailAndPassword(
         email: email,
@@ -25,7 +25,7 @@ class AuthRepoImp extends AuthRepo {
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
-      return left(ServerFailure('An unexpected error occurred: $e'));
+      return left(ServerFailure('خطأ في إنشاء المستخدم: $e'));
     }
   }
 }
