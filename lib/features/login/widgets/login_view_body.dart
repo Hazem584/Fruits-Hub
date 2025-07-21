@@ -10,8 +10,15 @@ import 'package:fruits_e_commerce/core/widgets/or_divider.dart';
 import 'package:fruits_e_commerce/features/login/widgets/dont_have_an_account.dart';
 import 'package:fruits_e_commerce/features/login/widgets/social_login_button.dart';
 
-class LoginViewBody extends StatelessWidget {
+class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
+
+  @override
+  State<LoginViewBody> createState() => _LoginViewBodyState();
+}
+
+class _LoginViewBodyState extends State<LoginViewBody> {
+  bool isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +47,20 @@ class LoginViewBody extends StatelessWidget {
           ),
           verticalSpace(20),
           AppTextFormFiled(
-            isObscureText: true,
-            backgroundColor: Color(0xFFF9FAFA),
+            isObscureText: !isPasswordVisible,
+            suffixIcon: GestureDetector(
+              onTap: () {
+                setState(() {
+                  isPasswordVisible = !isPasswordVisible;
+                });
+              },
+              child: Icon(
+                isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                color: AppColors.lightGray,
+              ),
+            ),
             hintText: 'كلمة المرور',
+            backgroundColor: Color(0xFFF9FAFA),
             hintStyle: TextStyles.font13lighterGrayBold,
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4),
@@ -58,11 +76,8 @@ class LoginViewBody extends StatelessWidget {
                 width: 1,
               ),
             ),
-            suffixIcon: Icon(
-              Icons.remove_red_eye,
-              color: AppColors.lighterGray,
-            ),
           ),
+
           verticalSpace(16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),

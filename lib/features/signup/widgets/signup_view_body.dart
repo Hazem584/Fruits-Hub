@@ -8,7 +8,9 @@ import 'package:fruits_e_commerce/core/widgets/app_text_button.dart';
 import 'package:fruits_e_commerce/core/widgets/app_text_form_filed.dart';
 import 'package:fruits_e_commerce/features/signup/logic/signup_cubit.dart';
 import 'package:fruits_e_commerce/features/signup/widgets/already_have_an_account.dart';
-import 'package:fruits_e_commerce/features/signup/widgets/terms_and_conditions.dart';
+import 'package:fruits_e_commerce/features/signup/widgets/custom_check_box.dart';
+import 'package:fruits_e_commerce/features/signup/utils/signup_validators.dart';
+import 'package:fruits_e_commerce/features/signup/widgets/terms_and_conditions.dart'; // Import the utilities
 
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
@@ -21,6 +23,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   late String name, password, email;
+  bool isTermsAccepted = false; // Add checkbox state
+  bool isPasswordVisible = false; // Add password visibility state
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
         key: formKey,
         autovalidateMode: autovalidateMode,
         child: Column(
-          mainAxisSize: MainAxisSize.min, // This is crucial!
+          mainAxisSize: MainAxisSize.min,
           children: [
             verticalSpace(24),
             AppTextFormFiled(
@@ -83,8 +87,18 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               onSaved: (value) {
                 password = value!;
               },
-              isObscureText: true,
-              suffixIcon: Icon(Icons.visibility, color: AppColors.lightGray),
+              isObscureText: !isPasswordVisible, // Toggle based on state
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isPasswordVisible = !isPasswordVisible;
+                  });
+                },
+                child: Icon(
+                  isPasswordVisible ? Icons.visibility_off : Icons.visibility,
+                  color: AppColors.lightGray,
+                ),
+              ),
               hintText: 'كلمة المرور',
               backgroundColor: Color(0xFFF9FAFA),
               hintStyle: TextStyles.font13lighterGrayBold,
@@ -104,7 +118,17 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               ),
             ),
             verticalSpace(15),
-            TermsAndConditions(),
+
+            // Updated TermsAndConditions to accept callback
+            TermsAndConditionsWithCallback(
+              isAccepted: isTermsAccepted,
+              onChanged: (value) {
+                setState(() {
+                  isTermsAccepted = value;
+                });
+              },
+            ),
+
             verticalSpace(20),
             AppTextButton(
               borderRadius: 19,
@@ -114,23 +138,29 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               buttonHeight: 63.h,
               backgroundColor: AppColors.primaryColor,
               onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
-                  context.read<SignupCubit>().createUserWithEmailAndPassword(
-                    email: email,
-                    password: password,
-                    name: name,
-                  );
-                } else {
-                  setState(() {
-                    autovalidateMode = AutovalidateMode.always;
-                  });
-                }
+                SignupValidators.validateAndSignup(
+                  context: context,
+                  formKey: formKey,
+                  isTermsAccepted: isTermsAccepted,
+                  onFormValid: () {
+                    formKey.currentState!.save();
+                    context.read<SignupCubit>().createUserWithEmailAndPassword(
+                      email: email,
+                      password: password,
+                      name: name,
+                    );
+                  },
+                  onFormInvalid: () {
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.always;
+                    });
+                  },
+                );
               },
             ),
             verticalSpace(20),
             AlreadyHaveAnAccount(),
-            verticalSpace(20), // Add some bottom spacing
+            verticalSpace(20),
           ],
         ),
       ),

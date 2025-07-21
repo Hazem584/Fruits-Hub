@@ -21,7 +21,7 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
     return GestureDetector(
       onTap: () => widget.onChanged(!widget.value),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 200),
         width: 24,
         height: 24,
         decoration: ShapeDecoration(
