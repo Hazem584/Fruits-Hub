@@ -8,7 +8,6 @@ import 'package:fruits_e_commerce/core/widgets/app_text_button.dart';
 import 'package:fruits_e_commerce/core/widgets/app_text_form_filed.dart';
 import 'package:fruits_e_commerce/features/signup/logic/signup_cubit.dart';
 import 'package:fruits_e_commerce/features/signup/widgets/already_have_an_account.dart';
-import 'package:fruits_e_commerce/features/signup/widgets/custom_check_box.dart';
 import 'package:fruits_e_commerce/features/signup/utils/signup_validators.dart';
 import 'package:fruits_e_commerce/features/signup/widgets/terms_and_conditions.dart'; // Import the utilities
 
