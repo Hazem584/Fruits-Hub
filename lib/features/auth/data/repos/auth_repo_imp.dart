@@ -29,7 +29,7 @@ class AuthRepoImp extends AuthRepo {
     }
   }
   @override
-  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(
+  Future<Either<Failure, UserEntity>> loginWithEmailAndPassword(
     String email,
     String password,
   ) async {

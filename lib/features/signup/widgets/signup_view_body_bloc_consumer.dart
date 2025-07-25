@@ -15,6 +15,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is SignupSuccess) {
           Future.microtask(() {
+            // ignore: use_build_context_synchronously
             Navigator.pushReplacementNamed(context, HomeView.routeName);
           });
         }
