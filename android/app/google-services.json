@@ -12,7 +12,12 @@
           "package_name": "com.example.fruits_e_commerce"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "302709623576-lmbaobatvoncdanbrj6j9hpla339h0t5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA8x9P3hgd0kHbX8hxcxhY3rC6VWnMyypg"

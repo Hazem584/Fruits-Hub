@@ -133,7 +133,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 style: TextStyles.font16BlackSemiBold,
                 textAlign: TextAlign.center,
               ),
-              onPressed: () {},
+              onPressed: () {
+                context.read<LoginCubit>().loginWithGoogle();
+              },
             ),
             verticalSpace(15),
             SocialLoginButton(

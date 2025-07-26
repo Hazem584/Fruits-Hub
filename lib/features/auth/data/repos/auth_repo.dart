@@ -12,8 +12,5 @@ abstract class AuthRepo {
     String email,
     String password,
   );
-  // Future<Either<Failure, void>> signOut();
-  // Future<Either<Failure, void>> sendPasswordResetEmail(String email);
-  // Future<Either<Failure, void>> deleteUser();
-  // Future<Either<Failure, void>> updateUserEmail(String email);
+  Future<Either<Failure, UserEntity>> loginWithGoogle();
 }

@@ -1,3 +1,5 @@
+import 'dart:developer' as dev;
+
 import 'package:dartz/dartz.dart';
 import 'package:fruits_e_commerce/core/error/exceptions.dart';
 import 'package:fruits_e_commerce/core/error/failures.dart';
@@ -10,6 +12,7 @@ class AuthRepoImp extends AuthRepo {
   final FirebaseAuthServices firebaseAuthServices;
 
   AuthRepoImp({required this.firebaseAuthServices});
+
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
     String email,
@@ -25,9 +28,11 @@ class AuthRepoImp extends AuthRepo {
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
-      return left(ServerFailure('خطأ في إنشاء المستخدم: $e'));
+      dev.log('Unexpected error in createUserWithEmailAndPassword: $e');
+      return left(ServerFailure('خطأ في إنشاء المستخدم: $e'));
     }
   }
+
   @override
   Future<Either<Failure, UserEntity>> loginWithEmailAndPassword(
     String email,
@@ -42,7 +47,24 @@ class AuthRepoImp extends AuthRepo {
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
-      return left(ServerFailure('خطأ في تسجيل الدخول: $e'));
+      dev.log('Unexpected error in loginWithEmailAndPassword: $e');
+      return left(ServerFailure('خطأ في تسجيل الدخول: $e'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> loginWithGoogle() async {
+    try {
+      var user = await firebaseAuthServices.signInWithGoogle();
+      if (user == null) {
+        return left(ServerFailure('تم إلغاء تسجيل الدخول بـ Google'));
+      }
+      return right(UserModel.fromFirebaseUser(user));
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    } catch (e) {
+      dev.log('Unexpected error in loginWithGoogle: $e');
+      return left(ServerFailure('خطأ في تسجيل الدخول بـ Google: $e'));
     }
   }
 }
