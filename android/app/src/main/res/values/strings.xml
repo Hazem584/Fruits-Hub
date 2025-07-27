@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="default_web_client_id">302709623576-lmbaobatvoncdanbrj6j9hpla339h0t5.apps.googleusercontent.com</string>
+    <string name="app_name">Fruits Hub</string>
+    <string name="facebook_app_id">736387112534042</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">ca83ff99a01a61bdf779482c1a965850</string>
 </resources>
