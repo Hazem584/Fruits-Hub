@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -137,16 +139,22 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 context.read<LoginCubit>().loginWithGoogle();
               },
             ),
-            verticalSpace(15),
-            SocialLoginButton(
-              image: Assets.appleIcon,
-              label: Text(
-                "تسجيل بواسطة أبل",
-                style: TextStyles.font16BlackSemiBold,
-                textAlign: TextAlign.center,
-              ),
-              onPressed: () {},
-            ),
+            verticalSpace(13),
+            Platform.isIOS
+                ? Column(
+                    children: [
+                      SocialLoginButton(
+                        image: Assets.appleIcon,
+                        label: Text(
+                          "تسجيل بواسطة أبل",
+                          style: TextStyles.font16BlackSemiBold,
+                          textAlign: TextAlign.center,
+                        ),
+                        onPressed: () {},
+                      ),
+                    ],
+                  )
+                : const SizedBox(),
             verticalSpace(15),
             SocialLoginButton(
               image: Assets.facebookIcon,

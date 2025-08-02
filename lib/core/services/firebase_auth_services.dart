@@ -46,6 +46,8 @@ class FirebaseAuthServices {
         throw CustomException('الرقم السري او البريد الالكتروني غير صحيح.');
       } else if (e.code == 'wrong-password') {
         throw CustomException('الرقم السري او البريد الالكتروني غير صحيح.');
+      } else if (e.code == 'invalid-credential') {
+        throw CustomException('البريد الالكتروني او الرقم السري غير صالح');
       } else if (e.code == 'invalid-email') {
         throw CustomException('البريد الالكتروني غير صالح');
       } else if (e.code == 'network-request-failed') {
@@ -61,11 +63,11 @@ class FirebaseAuthServices {
     }
   }
 
- Future<User?> signInWithGoogle() async {
+  Future<User?> signInWithGoogle() async {
     try {
       // Initialize GoogleSignIn (required in v7+)
       await _googleSignIn.initialize();
-      
+
       // Authenticate the user
       final GoogleSignInAccount googleUser = await _googleSignIn.authenticate(
         scopeHint: ['email', 'profile'],
@@ -82,12 +84,14 @@ class FirebaseAuthServices {
       );
 
       // Sign in to Firebase
-      final UserCredential userCredential = await _auth.signInWithCredential(credential);
+      final UserCredential userCredential = await _auth.signInWithCredential(
+        credential,
+      );
 
       return userCredential.user;
     } on GoogleSignInException catch (e) {
       dev.log('Google Sign-In Exception: ${e.code.name} - ${e.description}');
-      
+
       // Handle specific Google Sign-In errors
       switch (e.code.name) {
         case 'canceled':
@@ -103,14 +107,20 @@ class FirebaseAuthServices {
         case 'userMismatch':
           throw CustomException('مشكلة في الحساب. سجل الخروج وحاول مرة أخرى.');
         default:
-          throw CustomException('خطأ غير متوقع في Google Sign-In: ${e.description}');
+          throw CustomException(
+            'خطأ غير متوقع في Google Sign-In: ${e.description}',
+          );
       }
     } on FirebaseAuthException catch (e) {
-      dev.log('Firebase Auth Error in Google Sign-In: ${e.code} - ${e.message}');
-      
+      dev.log(
+        'Firebase Auth Error in Google Sign-In: ${e.code} - ${e.message}',
+      );
+
       // Handle specific Firebase Auth errors
       if (e.code == 'account-exists-with-different-credential') {
-        throw CustomException('يوجد حساب بهذا البريد الإلكتروني مع طريقة تسجيل دخول مختلفة.');
+        throw CustomException(
+          'يوجد حساب بهذا البريد الإلكتروني مع طريقة تسجيل دخول مختلفة.',
+        );
       } else if (e.code == 'invalid-credential') {
         throw CustomException('بيانات الاعتماد غير صالحة.');
       } else if (e.code == 'operation-not-allowed') {
@@ -125,9 +135,13 @@ class FirebaseAuthServices {
       throw CustomException('خطأ في تسجيل الدخول بـ Google: $e');
     }
   }
-Future<User> signInWithFacebook() async {
-  final LoginResult loginResult = await FacebookAuth.instance.login();
-  final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
-  return (await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential)).user!;
-}
+
+  Future<User> signInWithFacebook() async {
+    final LoginResult loginResult = await FacebookAuth.instance.login();
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+    return (await FirebaseAuth.instance.signInWithCredential(
+      facebookAuthCredential,
+    )).user!;
+  }
 }

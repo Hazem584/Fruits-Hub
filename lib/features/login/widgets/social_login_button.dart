@@ -16,7 +16,7 @@ class SocialLoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 340.w,
-      height: 60.h,
+      height: 65.h,
       child: TextButton(
         style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
