@@ -27,4 +27,5 @@ class UserModel extends UserEntity {
       uId: user.uId,
     );
   }
+
 }
