@@ -10,6 +10,7 @@ import 'package:fruits_e_commerce/core/utils/app_images.dart';
 import 'package:fruits_e_commerce/core/widgets/app_text_button.dart';
 import 'package:fruits_e_commerce/core/widgets/app_text_form_filed.dart';
 import 'package:fruits_e_commerce/core/widgets/or_divider.dart';
+import 'package:fruits_e_commerce/features/home/presentation/view/home_view.dart';
 import 'package:fruits_e_commerce/features/login/logic/login_cubit.dart';
 import 'package:fruits_e_commerce/features/login/widgets/dont_have_an_account.dart';
 import 'package:fruits_e_commerce/features/login/widgets/social_login_button.dart';
@@ -114,13 +115,14 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               buttonHeight: 63.h,
               backgroundColor: AppColors.primaryColor,
               onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
-                  context.read<LoginCubit>().login(email, password);
-                } else {
-                  autovalidateMode = AutovalidateMode.always;
-                  setState(() {});
-                }
+                Navigator.pushNamed(context, HomeView.routeName);
+                // if (formKey.currentState!.validate()) {
+                //   formKey.currentState!.save();
+                //   context.read<LoginCubit>().login(email, password);
+                // } else {
+                //   autovalidateMode = AutovalidateMode.always;
+                //   setState(() {});
+                // }
               },
             ),
             verticalSpace(30),

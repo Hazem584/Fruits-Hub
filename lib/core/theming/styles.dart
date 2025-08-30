@@ -8,7 +8,7 @@ class TextStyles {
   static TextStyle font23BlackBold = TextStyle(
     fontSize: 23.sp,
     fontWeight: FontWeightHelper.bold,
-    color: Colors.black,
+    color: AppColors.black,
     fontFamily: 'Cairo',
   );
   static TextStyle font13lightGraySemiBold = TextStyle(
@@ -26,7 +26,7 @@ class TextStyles {
   static TextStyle font19BlackBold = TextStyle(
     fontSize: 19.sp,
     fontWeight: FontWeightHelper.bold,
-    color: Colors.black,
+    color: AppColors.black,
     fontFamily: 'Cairo',
   );
   static TextStyle font13lighterGrayBold = TextStyle(
@@ -38,7 +38,7 @@ class TextStyles {
   static TextStyle font13BlackSemiBold = TextStyle(
     fontSize: 13.sp,
     fontWeight: FontWeightHelper.semiBold,
-    color: Colors.black,
+    color: AppColors.black,
     fontFamily: 'Cairo',
   );
   static TextStyle font13lightGreenSemiBold = TextStyle(
@@ -62,7 +62,19 @@ class TextStyles {
   static TextStyle font16BlackSemiBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.semiBold,
-    color: Colors.black,
+    color: AppColors.black,
+    fontFamily: 'Cairo',
+  );
+  static TextStyle font16lighterGraySemiBold = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: AppColors.lighterGray,
+    fontFamily: 'Cairo',
+  );
+  static TextStyle font16BlackBold = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.black,
     fontFamily: 'Cairo',
   );
 }
