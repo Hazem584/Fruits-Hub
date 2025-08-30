@@ -129,7 +129,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             const OrDivider(),
             verticalSpace(16),
             SocialLoginButton(
-              image: Assets.googleIcon,
+              image: Assets.assetsImagesGoogleIcon,
               label: Text(
                 "تسجيل بواسطة جوجل",
                 style: TextStyles.font16BlackSemiBold,
@@ -144,7 +144,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 ? Column(
                     children: [
                       SocialLoginButton(
-                        image: Assets.appleIcon,
+                        image: Assets.assetsImagesAppleIcon,
                         label: Text(
                           "تسجيل بواسطة أبل",
                           style: TextStyles.font16BlackSemiBold,
@@ -157,7 +157,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 : const SizedBox(),
             verticalSpace(15),
             SocialLoginButton(
-              image: Assets.facebookIcon,
+              image: Assets.assetsImagesFacebookIcon,
               label: Text(
                 "تسجيل بواسطة فيسبوك",
                 style: TextStyles.font16BlackSemiBold,

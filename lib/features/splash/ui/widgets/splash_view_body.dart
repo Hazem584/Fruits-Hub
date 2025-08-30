@@ -1,6 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_e_commerce/core/services/shared_preferences_singleton.dart';
@@ -31,10 +30,10 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
-          children: [SvgPicture.asset(Assets.imagesPlant)],
+          children: [SvgPicture.asset(Assets.assetsImagesPlant)],
         ),
-        SvgPicture.asset(Assets.imagesLogo),
-        SvgPicture.asset(Assets.imagesSplashBottom, fit: BoxFit.fill),
+        SvgPicture.asset(Assets.assetsImagesLogo),
+        SvgPicture.asset(Assets.assetsImagesSplashBottom, fit: BoxFit.fill),
       ],
     );
   }
