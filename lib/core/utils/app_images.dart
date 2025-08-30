@@ -58,6 +58,10 @@ class Assets {
   /// assets/images/google_icon.svg
   static const String assetsImagesGoogleIcon = "assets/images/google_icon.svg";
 
+  /// Assets for assetsImagesHomeShape
+  /// assets/images/home_shape.svg
+  static const String assetsImagesHomeShape = "assets/images/home_shape.svg";
+
   /// Assets for assetsImagesLogo
   /// assets/images/logo.svg
   static const String assetsImagesLogo = "assets/images/logo.svg";
@@ -93,5 +97,13 @@ class Assets {
   /// Assets for assetsImagesSplashBottom
   /// assets/images/splash_bottom.svg
   static const String assetsImagesSplashBottom = "assets/images/splash_bottom.svg";
+
+  /// Assets for assetsImagesStrawberry
+  /// assets/images/strawberry.png
+  static const String assetsImagesStrawberry = "assets/images/strawberry.png";
+
+  /// Assets for assetsImagesWatermelonTest
+  /// assets/images/watermelon_test.png
+  static const String assetsImagesWatermelonTest = "assets/images/watermelon_test.png";
 }
 

@@ -77,4 +77,34 @@ class TextStyles {
     color: AppColors.black,
     fontFamily: 'Cairo',
   );
+  static TextStyle font13WhiteNormal = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.normal,
+    color: Colors.white,
+    fontFamily: 'Cairo',
+  );
+  static TextStyle font19WhiteBold = TextStyle(
+    fontSize: 19.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.white,
+    fontFamily: 'Cairo',
+  );
+  static TextStyle font13PrimaryColorBold = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.primaryColor,
+    fontFamily: 'Cairo',
+  );
+  static TextStyle font13OrangeBold = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.orange,
+    fontFamily: 'Cairo',
+  );
+  static TextStyle font13OrangeNormal = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.normal,
+    color: AppColors.orange,
+    fontFamily: 'Cairo',
+  );
 }

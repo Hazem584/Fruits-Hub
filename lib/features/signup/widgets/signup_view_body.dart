@@ -133,8 +133,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               borderRadius: 19,
               buttonText: "إنشاء حساب جديد",
               textStyle: TextStyles.font15WhiteBold,
-              buttonWidth: 300.w,
-              buttonHeight: 63.h,
+              buttonWidth: 290.w,
+              buttonHeight: 40.h,
               backgroundColor: AppColors.primaryColor,
               onPressed: () {
                 SignupValidators.validateAndSignup(

@@ -111,8 +111,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               borderRadius: 19,
               buttonText: 'تسجيل دخول',
               textStyle: TextStyles.font15WhiteBold,
-              buttonWidth: 300.w,
-              buttonHeight: 63.h,
+              buttonWidth: 290.w,
+              buttonHeight: 40.h,
               backgroundColor: AppColors.primaryColor,
               onPressed: () {
                 Navigator.pushNamed(context, HomeView.routeName);

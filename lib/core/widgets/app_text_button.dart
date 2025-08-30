@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_e_commerce/core/theming/app_colors.dart';
-
 
 class AppTextButton extends StatelessWidget {
   final double? borderRadius;
@@ -14,6 +12,7 @@ class AppTextButton extends StatelessWidget {
   final String buttonText;
   final TextStyle textStyle;
   final VoidCallback onPressed;
+
   const AppTextButton({
     super.key,
     this.borderRadius,
@@ -29,30 +28,37 @@ class AppTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: ButtonStyle(
-        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 16.0),
+    return SizedBox(
+      width: buttonWidth?.w ?? double.maxFinite,
+      height: buttonHeight?.h ?? 52.h,
+      child: TextButton(
+        style: ButtonStyle(
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(borderRadius ?? 16.0),
+            ),
+          ),
+          backgroundColor: WidgetStatePropertyAll(
+            backgroundColor ?? AppColors.primaryColor,
+          ),
+          padding: WidgetStateProperty.all<EdgeInsets>(
+            EdgeInsets.symmetric(
+              horizontal: horizontalPadding?.w ?? 8.w,
+              vertical: verticalPadding?.h ?? 4.h,
+            ),
+          ),
+          minimumSize: WidgetStateProperty.all(Size.zero),
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
+        onPressed: onPressed,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            buttonText,
+            style: textStyle,
+            textAlign: TextAlign.center,
           ),
         ),
-        backgroundColor: WidgetStatePropertyAll(
-          backgroundColor ?? AppColors.primaryColor,
-        ),
-        padding: WidgetStateProperty.all<EdgeInsets>(
-          EdgeInsets.symmetric(
-            horizontal: horizontalPadding?.w ?? 12.w,
-            vertical: verticalPadding?.h ?? 14.h,
-          ),
-        ),
-        fixedSize: WidgetStateProperty.all(
-          Size(buttonWidth?.w ?? double.maxFinite, buttonHeight ?? 52.h),
-        ),
-      ),
-      onPressed: onPressed,
-      child: Text(
-        buttonText,
-        style: textStyle,
       ),
     );
   }
