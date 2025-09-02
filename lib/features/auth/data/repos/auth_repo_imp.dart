@@ -1,11 +1,14 @@
+import 'dart:convert';
 import 'dart:developer' as dev;
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_e_commerce/core/error/exceptions.dart';
 import 'package:fruits_e_commerce/core/error/failures.dart';
+import 'package:fruits_e_commerce/core/helper/constants.dart';
 import 'package:fruits_e_commerce/core/services/database_service.dart';
 import 'package:fruits_e_commerce/core/services/firebase_auth_services.dart';
+import 'package:fruits_e_commerce/core/services/shared_preferences_singleton.dart';
 import 'package:fruits_e_commerce/core/utils/backend_endpoint.dart';
 import 'package:fruits_e_commerce/features/auth/data/model/user_entity.dart';
 import 'package:fruits_e_commerce/features/auth/data/model/user_model.dart';
@@ -63,6 +66,8 @@ class AuthRepoImp extends AuthRepo {
         password: password,
       );
       var userEntity = await getUserData(uId: user.uid);
+      await saveUserData(user: userEntity);
+
       return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
@@ -82,6 +87,7 @@ class AuthRepoImp extends AuthRepo {
       }
 
       var userEntity = UserModel.fromFirebaseUser(user);
+      await saveUserData(user: userEntity);
       var isUserExists = await databaseService.checkIfDocumentExists(
         path: BackendEndpoint.isUserExists,
         documentId: user.uid,
@@ -113,6 +119,8 @@ class AuthRepoImp extends AuthRepo {
     try {
       user = await firebaseAuthServices.signInWithFacebook();
       var userEntity = UserModel.fromFirebaseUser(user);
+      await saveUserData(user: userEntity);
+
       var isUserExists = await databaseService.checkIfDocumentExists(
         path: BackendEndpoint.isUserExists,
         documentId: user.uid,
@@ -143,7 +151,7 @@ class AuthRepoImp extends AuthRepo {
   Future addUserData({required UserEntity user}) async {
     await databaseService.addData(
       path: BackendEndpoint.addUserData,
-      data: user.toMap(),
+      data: UserModel.fromEntity(user).toMap(),
       documentId: user.uId,
     );
   }
@@ -155,5 +163,16 @@ class AuthRepoImp extends AuthRepo {
       documentId: uId,
     );
     return UserModel.fromJson(userData);
+  }
+
+  @override
+  Future saveUserData({required UserEntity user}) async {
+    try {
+      var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
+      await Prefs.setString(kUserData, jsonData);
+    } catch (e) {
+      dev.log('Error saving user data: $e');
+      throw CustomException('خطأ في حفظ بيانات المستخدم');
+    }
   }
 }
