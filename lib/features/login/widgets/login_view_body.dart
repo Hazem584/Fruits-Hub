@@ -115,14 +115,13 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               buttonHeight: 40.h,
               backgroundColor: AppColors.primaryColor,
               onPressed: () {
-                Navigator.pushNamed(context, HomeView.routeName);
-                // if (formKey.currentState!.validate()) {
-                //   formKey.currentState!.save();
-                //   context.read<LoginCubit>().login(email, password);
-                // } else {
-                //   autovalidateMode = AutovalidateMode.always;
-                //   setState(() {});
-                // }
+                if (formKey.currentState!.validate()) {
+                  formKey.currentState!.save();
+                  context.read<LoginCubit>().login(email, password);
+                } else {
+                  autovalidateMode = AutovalidateMode.always;
+                  setState(() {});
+                }
               },
             ),
             verticalSpace(30),
