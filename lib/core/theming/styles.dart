@@ -113,4 +113,10 @@ class TextStyles {
     color: AppColors.primaryColor,
     fontFamily: 'Cairo',
   );
+    static TextStyle font19SemiBlackBold = TextStyle(
+    fontSize: 19.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: AppColors.black,
+    fontFamily: 'Cairo',
+  );
 }
