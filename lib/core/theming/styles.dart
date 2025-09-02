@@ -107,4 +107,10 @@ class TextStyles {
     color: AppColors.orange,
     fontFamily: 'Cairo',
   );
+    static TextStyle font11PrimaryColorBold = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.primaryColor,
+    fontFamily: 'Cairo',
+  );
 }
