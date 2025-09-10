@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce/features/home/presentation/view/cart_view.dart';
+import 'package:fruits_e_commerce/features/home/presentation/view/products_view.dart';
+import 'package:fruits_e_commerce/features/home/presentation/widgets/custom_button_navigation_bar.dart';
+import 'package:fruits_e_commerce/features/home/presentation/widgets/home_view.dart';
+
+class MainView extends StatefulWidget {
+  const MainView({super.key});
+
+  static const routeName = 'home_view';
+
+  @override
+  State<MainView> createState() => _MainViewState();
+}
+
+class _MainViewState extends State<MainView> {
+  int currentViewIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: CustomButtonNavigationBar(
+        onItemTapped: (index) {
+          currentViewIndex = index;
+          setState(() {});
+        },
+      ),
+      body: SafeArea(
+        child: IndexedStack(
+          index: currentViewIndex,
+          children: [const HomeView(), const ProductsView(), const CartView()],
+        ),
+      ),
+    );
+  }
+}

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fruits_e_commerce/core/entities/product_entity.dart';
 import 'package:fruits_e_commerce/core/helper/spacing.dart';
 import 'package:fruits_e_commerce/core/theming/app_colors.dart';
 import 'package:fruits_e_commerce/core/theming/styles.dart';
 import 'package:fruits_e_commerce/core/utils/app_images.dart';
 
 class FruitItem extends StatelessWidget {
-  const FruitItem({super.key});
+  const FruitItem({super.key, required this.productEntity});
+  final ProductEntity productEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +32,7 @@ class FruitItem extends StatelessWidget {
                 verticalSpace(16),
                 Expanded(
                   flex: 3,
-                  child: Center(
-                    child: Image.asset(
-                      Assets.assetsImagesWatermelonTest,
-                      fit: BoxFit.contain,
-                      height: 80.h,
-                    ),
-                  ),
+                  child: Center(child: Image.network(productEntity.imageUrl!)),
                 ),
                 verticalSpace(8),
                 Expanded(
@@ -45,7 +41,10 @@ class FruitItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('بطيخ', style: TextStyles.font13BlackSemiBold),
+                      Text(
+                        productEntity.name,
+                        style: TextStyles.font13BlackSemiBold,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,7 +53,7 @@ class FruitItem extends StatelessWidget {
                             child: Row(
                               children: [
                                 Text(
-                                  '20 جنيه',
+                                  '\ ${productEntity.price} جنيه',
                                   style: TextStyles.font13OrangeBold,
                                 ),
                                 Text(

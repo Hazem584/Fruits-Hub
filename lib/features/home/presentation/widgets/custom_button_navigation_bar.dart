@@ -4,8 +4,8 @@ import 'package:fruits_e_commerce/features/home/domain/entities/bottom_navigatio
 import 'package:fruits_e_commerce/features/home/presentation/widgets/navigation_bar_item.dart';
 
 class CustomButtonNavigationBar extends StatefulWidget {
-  const CustomButtonNavigationBar({super.key});
-
+  const CustomButtonNavigationBar({super.key, required this.onItemTapped});
+  final ValueChanged<int> onItemTapped;
   @override
   State<CustomButtonNavigationBar> createState() =>
       _CustomButtonNavigationBarState();
@@ -44,6 +44,7 @@ class _CustomButtonNavigationBarState extends State<CustomButtonNavigationBar> {
           return GestureDetector(
             onTap: () {
               setState(() {
+                widget.onItemTapped(index);
                 currentIndex = index;
               });
             },

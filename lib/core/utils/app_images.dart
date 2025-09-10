@@ -126,6 +126,14 @@ class Assets {
   /// assets/images/strawberry.png
   static const String assetsImagesStrawberry = "assets/images/strawberry.png";
 
+  /// Assets for assetsImagesSwaper
+  /// assets/images/swaper.svg
+  static const String assetsImagesSwaper = "assets/images/swaper.svg";
+
+  /// Assets for assetsImagesTrash
+  /// assets/images/trash.svg
+  static const String assetsImagesTrash = "assets/images/trash.svg";
+
   /// Assets for assetsImagesUser
   /// assets/images/user.svg
   static const String assetsImagesUser = "assets/images/user.svg";

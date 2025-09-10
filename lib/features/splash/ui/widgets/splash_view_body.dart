@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_e_commerce/core/services/firebase_auth_services.dart';
 import 'package:fruits_e_commerce/core/services/shared_preferences_singleton.dart';
 import 'package:fruits_e_commerce/core/utils/app_images.dart';
 import 'package:fruits_e_commerce/core/utils/constants.dart';
-import 'package:fruits_e_commerce/features/home/presentation/view/home_view.dart';
+import 'package:fruits_e_commerce/features/home/presentation/view/main_view.dart';
 import 'package:fruits_e_commerce/features/login/ui/login_view.dart';
 import 'package:fruits_e_commerce/features/onbording/ui/screen/on_bording_view.dart';
 
@@ -41,11 +40,11 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
   void executeNavigation() {
     bool isOnBoardingViewSeen = Prefs.getBool(KIsOnBoardingViewSeen, false);
-    Future.delayed(const Duration(seconds: 3), ()  {
+    Future.delayed(const Duration(seconds: 3), () {
       if (isOnBoardingViewSeen) {
         var isUserLoggedIn = FirebaseAuthServices().isLoggedIn();
         if (isUserLoggedIn) {
-          Navigator.pushReplacementNamed(context, HomeView.routeName);
+          Navigator.pushReplacementNamed(context, MainView.routeName);
         } else {
           Navigator.pushReplacementNamed(context, LoginView.routeName);
         }

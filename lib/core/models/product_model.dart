@@ -1,4 +1,7 @@
+import 'package:fruits_e_commerce/core/entities/review_entity.dart';
+import 'package:fruits_e_commerce/core/helper/get_avg_rating.dart';
 import 'package:fruits_e_commerce/core/models/review_model.dart';
+import 'package:fruits_e_commerce/core/entities/product_entity.dart';
 
 class ProductModel {
   final String name;
@@ -11,8 +14,8 @@ class ProductModel {
   final bool isOrganic;
   final int numberOfCalories;
   final int unitAmount;
-  final num avgRating = 0;
-  final num ratingCounts = 0;
+  final num avgRating;
+  final num ratingCounts;
   final List<ReviewModel> reviews;
   final num sellingCount;
 
@@ -29,7 +32,10 @@ class ProductModel {
     this.isOrganic = false,
     required this.reviews,
     required this.sellingCount,
+    required this.avgRating,
+    this.ratingCounts = 0,
   });
+
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
       name: json['name'],
@@ -40,9 +46,11 @@ class ProductModel {
       isFeatured: json['isFeatured'],
       price: json['price'],
       expirationMonths: json['expirationMonths'],
-      isOrganic: json['isOrganic'],
+      isOrganic: json['isOrganic'] ?? false,
       numberOfCalories: json['numberOfCalories'],
       unitAmount: json['unitAmount'],
+      avgRating: json['avgRating']?.toDouble() ?? 0.0,
+      ratingCounts: json['ratingCounts'] ?? 0,
       reviews: json['reviews'] != null
           ? List<ReviewModel>.from(
               json['reviews'].map((e) => ReviewModel.fromJson(e)),
@@ -50,12 +58,12 @@ class ProductModel {
           : [],
     );
   }
-  toEntity() {
-    return ProductModel(
+
+  ProductEntity toEntity() {
+    return ProductEntity(
       name: name,
       description: description,
       imageUrl: imageUrl,
-      sellingCount: sellingCount,
       code: code,
       isFeatured: isFeatured,
       price: price,
@@ -63,11 +71,13 @@ class ProductModel {
       isOrganic: isOrganic,
       numberOfCalories: numberOfCalories,
       unitAmount: unitAmount,
-      reviews: reviews.map((e) => e).toList(),
+      avgRating: avgRating,
+      ratingCounts: ratingCounts,
+      reviews: reviews.map<ReviewEntity>((e) => e.toEntity()).toList(),
     );
   }
 
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {
       "name": name,
       "description": description,

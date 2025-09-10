@@ -8,7 +8,7 @@ class BestSellingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BuildAppBar(title: 'الاكثر مبيعًا'),
+      appBar: BuildAppBar(context, title: 'الاكثر مبيعًا'),
       body: BestSellingViewBody(),
     );
   }

@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce/core/cubits/producs_cubit/product_cubit.dart';
 import 'package:fruits_e_commerce/core/helper/spacing.dart';
+import 'package:fruits_e_commerce/core/widgets/build_app_bar.dart';
 import 'package:fruits_e_commerce/core/widgets/search_text_field.dart';
 import 'package:fruits_e_commerce/features/home/presentation/widgets/product_grid_view_bloc_builder.dart';
-import 'package:fruits_e_commerce/features/home/presentation/widgets/best_selling_header.dart';
 import 'package:fruits_e_commerce/features/home/presentation/widgets/custom_home_app_bar.dart';
-import 'package:fruits_e_commerce/features/home/presentation/widgets/featured_list.dart';
+import 'package:fruits_e_commerce/features/home/presentation/widgets/products_header.dart';
 
-class HomeVIewBody extends StatefulWidget {
-  const HomeVIewBody({super.key});
+class ProductsViewBody extends StatefulWidget {
+  const ProductsViewBody({super.key});
 
   @override
-  State<HomeVIewBody> createState() => _HomeVIewBodyState();
+  State<ProductsViewBody> createState() => _ProductsViewBodyState();
 }
 
-class _HomeVIewBodyState extends State<HomeVIewBody> {
+class _ProductsViewBodyState extends State<ProductsViewBody> {
   @override
   void initState() {
-    context.read<ProductCubit>().fetchBestSellingProducts();
+    context.read<ProductCubit>().fetchAllProducts();
     super.initState();
   }
 
@@ -29,13 +29,13 @@ class _HomeVIewBodyState extends State<HomeVIewBody> {
         SliverToBoxAdapter(
           child: Column(
             children: [
-              CustomHomeAppBar(),
+              BuildAppBar(context, title: 'المنتجات', showBackButton: false),
               verticalSpace(20),
               SearchTextField(),
               verticalSpace(12),
-              FeaturedList(),
-              verticalSpace(14),
-              BestSellingHeader(),
+              ProductsHeader(
+                productLength: context.watch<ProductCubit>().productLength,
+              ),
               verticalSpace(12),
             ],
           ),

@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:fruits_e_commerce/core/entities/review_entity.dart';
-
 
 class ProductEntity {
   final String name;
@@ -9,14 +7,13 @@ class ProductEntity {
   final String? imageUrl;
   final String code;
   final bool isFeatured;
-  final File imagePath;
   final num price;
   final int expirationMonths;
   final bool isOrganic;
   final int numberOfCalories;
   final int unitAmount;
-  final num avgRating = 0;
-  final num ratingCounts = 0;
+  final num avgRating;
+  final num ratingCounts;
   final List<ReviewEntity> reviews;
 
   ProductEntity({
@@ -26,13 +23,15 @@ class ProductEntity {
     this.imageUrl,
     required this.code,
     required this.isFeatured,
-    required this.imagePath,
     required this.expirationMonths,
     required this.numberOfCalories,
     required this.unitAmount,
     this.isOrganic = false,
     required this.reviews,
+    this.avgRating = 0,
+    this.ratingCounts = 0,
   });
+
   ProductEntity copyWith({
     String? name,
     String? description,
@@ -41,6 +40,13 @@ class ProductEntity {
     bool? isFeatured,
     File? imagePath,
     num? price,
+    int? expirationMonths,
+    bool? isOrganic,
+    int? numberOfCalories,
+    int? unitAmount,
+    num? avgRating,
+    num? ratingCounts,
+    List<ReviewEntity>? reviews,
   }) {
     return ProductEntity(
       name: name ?? this.name,
@@ -48,13 +54,14 @@ class ProductEntity {
       imageUrl: imageUrl ?? this.imageUrl,
       code: code ?? this.code,
       isFeatured: isFeatured ?? this.isFeatured,
-      imagePath: imagePath ?? this.imagePath,
       price: price ?? this.price,
-      expirationMonths: expirationMonths,
-      numberOfCalories: numberOfCalories,
-      unitAmount: unitAmount,
-      isOrganic: isOrganic,
-      reviews: reviews,
+      expirationMonths: expirationMonths ?? this.expirationMonths,
+      numberOfCalories: numberOfCalories ?? this.numberOfCalories,
+      unitAmount: unitAmount ?? this.unitAmount,
+      isOrganic: isOrganic ?? this.isOrganic,
+      reviews: reviews ?? this.reviews,
+      avgRating: avgRating ?? this.avgRating,
+      ratingCounts: ratingCounts ?? this.ratingCounts,
     );
   }
 }

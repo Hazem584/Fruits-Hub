@@ -8,6 +8,7 @@ class InActiveItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
+      color: Colors.transparent,
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
       padding: EdgeInsets.all(8.0),
