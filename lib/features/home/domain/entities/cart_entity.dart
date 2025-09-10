@@ -1,3 +1,4 @@
+import 'package:fruits_e_commerce/core/entities/product_entity.dart';
 import 'package:fruits_e_commerce/features/home/domain/entities/cart_item_entity.dart';
 
 class CartEntity {
@@ -9,7 +10,34 @@ class CartEntity {
     cartItems.add(cartItemEntity);
   }
 
-  isExist() {
-    return cartItems.isNotEmpty;
+  bool isExist(ProductEntity productEntity) {
+    bool isExist = false;
+    for (var item in cartItems) {
+      if (item.productEntity == productEntity) {
+        return true;
+      }
+    }
+    return isExist;
+  }
+
+  double calculateTotalPrice() {
+    double total = 0.0;
+    for (var item in cartItems) {
+      total += item.calculateTotalPrice();
+    }
+    return total;
+  }
+
+  CartItemEntity getCartItemByProduct(ProductEntity productEntity) {
+    for (var item in cartItems) {
+      if (item.productEntity == productEntity) {
+        return item;
+      }
+    }
+    return CartItemEntity(productEntity: productEntity, count: 1);
+  }
+
+  removeCartItem(CartItemEntity cartEntity) {
+    cartItems.remove(cartEntity);
   }
 }

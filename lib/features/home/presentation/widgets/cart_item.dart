@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_e_commerce/core/helper/spacing.dart';
 import 'package:fruits_e_commerce/core/theming/styles.dart';
 import 'package:fruits_e_commerce/features/home/domain/entities/cart_item_entity.dart';
+import 'package:fruits_e_commerce/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:fruits_e_commerce/features/home/presentation/widgets/cart_otem_action_buttons.dart';
 
 import '../../../../../core/utils/app_images.dart';
@@ -40,7 +42,11 @@ class CartItem extends StatelessWidget {
 
                     const Spacer(),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<CartCubit>().delateCartItem(
+                          cartItemEntity,
+                        );
+                      },
                       icon: SvgPicture.asset(Assets.assetsImagesTrash),
                     ),
                   ],

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
-import 'package:fruits_e_commerce/features/home/presentation/view/cart_view.dart';
-import 'package:fruits_e_commerce/features/home/presentation/view/products_view.dart';
 import 'package:fruits_e_commerce/features/home/presentation/widgets/custom_button_navigation_bar.dart';
-import 'package:fruits_e_commerce/features/home/presentation/widgets/home_view.dart';
+import 'package:fruits_e_commerce/features/home/presentation/widgets/main_view_body_bloc_consumer.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -29,14 +27,7 @@ class _MainViewState extends State<MainView> {
           },
         ),
         body: SafeArea(
-          child: IndexedStack(
-            index: currentViewIndex,
-            children: [
-              const HomeView(),
-              const ProductsView(),
-              const CartView(),
-            ],
-          ),
+          child: MainViewBodyBlocConsumer(currentViewIndex: currentViewIndex),
         ),
       ),
     );

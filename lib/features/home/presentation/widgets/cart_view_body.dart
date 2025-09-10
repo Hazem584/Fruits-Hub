@@ -36,7 +36,7 @@ class CartViewBody extends StatelessWidget {
                   ? SizedBox()
                   : Divider(color: Color(0xfff1f1f5), thickness: 1, height: 22),
             ),
-            CartItemsList(cartItems: []),
+            CartItemsList(cartItems: context.watch<CartCubit>().cart.cartItems),
           ],
         ),
         Positioned(
@@ -44,7 +44,8 @@ class CartViewBody extends StatelessWidget {
           left: 16,
           bottom: MediaQuery.sizeOf(context).height * 0.05,
           child: AppTextButton(
-            buttonText: "الدفع  120جنيه",
+            buttonText:
+                "الدفع  ${context.watch<CartCubit>().cart.calculateTotalPrice()} جنيه",
             textStyle: TextStyles.font15WhiteBold,
             onPressed: () {},
           ),
