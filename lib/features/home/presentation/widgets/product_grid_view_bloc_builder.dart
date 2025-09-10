@@ -13,13 +13,32 @@ class ProductGridViewBlocBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductCubit, ProductCubitState>(
       builder: (context, state) {
+        print("🎯 ProductGridView State: ${state.runtimeType}");
+
         if (state is ProductCubitSuccess) {
+          print("✅ Success: ${state.products.length} products");
+          if (state.products.isEmpty) {
+            return SliverToBoxAdapter(
+              child: Center(child: Text('لا توجد منتجات')),
+            );
+          }
           return ProductGridView(products: state.products);
         } else if (state is ProductCubitError) {
+          print("❌ Error: ${state.message}");
           return SliverToBoxAdapter(
-            child: CustomErrorWidget(message: state.message),
+            child: Column(
+              children: [
+                CustomErrorWidget(message: state.message),
+                ElevatedButton(
+                  onPressed: () =>
+                      context.read<ProductCubit>().fetchAllProducts(),
+                  child: Text('إعادة المحاولة'),
+                ),
+              ],
+            ),
           );
         } else {
+          print("⏳ Loading state - showing skeleton");
           return Skeletonizer.sliver(
             enabled: true,
             child: ProductGridView(products: getDummyProducts()),

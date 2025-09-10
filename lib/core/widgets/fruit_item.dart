@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_e_commerce/core/entities/product_entity.dart';
 import 'package:fruits_e_commerce/core/helper/spacing.dart';
 import 'package:fruits_e_commerce/core/theming/app_colors.dart';
 import 'package:fruits_e_commerce/core/theming/styles.dart';
-import 'package:fruits_e_commerce/core/utils/app_images.dart';
+import 'package:fruits_e_commerce/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 
 class FruitItem extends StatelessWidget {
   const FruitItem({super.key, required this.productEntity});
@@ -53,7 +54,7 @@ class FruitItem extends StatelessWidget {
                             child: Row(
                               children: [
                                 Text(
-                                  '\ ${productEntity.price} جنيه',
+                                  ' ${productEntity.price} جنيه',
                                   style: TextStyles.font13OrangeBold,
                                 ),
                                 Text(
@@ -63,9 +64,16 @@ class FruitItem extends StatelessWidget {
                               ],
                             ),
                           ),
-                          CircleAvatar(
-                            backgroundColor: AppColors.primaryColor,
-                            child: Icon(Icons.add, color: Colors.white),
+                          GestureDetector(
+                            onTap: () {
+                              context.read<CartCubit>().addProduct(
+                                productEntity,
+                              );
+                            },
+                            child: CircleAvatar(
+                              backgroundColor: AppColors.primaryColor,
+                              child: Icon(Icons.add, color: Colors.white),
+                            ),
                           ),
                         ],
                       ),

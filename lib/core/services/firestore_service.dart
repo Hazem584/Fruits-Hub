@@ -36,7 +36,9 @@ class FirestoreService implements DatabaseService {
             .get();
 
         if (doc.exists) {
-          return doc.data();
+          final data = doc.data()!;
+          data['id'] = doc.id; // إضافة الـ ID للبيانات
+          return data;
         } else {
           return null;
         }
@@ -145,13 +147,27 @@ class FirestoreService implements DatabaseService {
 
         QuerySnapshot<Map<String, dynamic>> querySnapshot = await collectionRef
             .get();
-        return querySnapshot.docs.map((doc) {
+
+        // Debug: طباعة عدد النتائج
+        print('Number of documents fetched: ${querySnapshot.docs.length}');
+
+        final List<Map<String, dynamic>> results = querySnapshot.docs.map((
+          doc,
+        ) {
           final data = doc.data();
           data['id'] = doc.id; // Add document ID to the data
+
+          // Debug: طباعة البيانات
+          print('Document data: $data');
+
           return data;
         }).toList();
+
+        print('Final results count: ${results.length}');
+        return results;
       }
     } catch (e) {
+      print('Error in getData: $e'); // Debug
       throw Exception('Failed to get data: $e');
     }
   }

@@ -10,33 +10,85 @@ class ProductCubit extends Cubit<ProductCubitState> {
 
   final ProductRepo productRepo;
   int productLength = 0;
+
   Future<void> fetchAllProducts() async {
+    print('Starting fetchAllProducts...');
     emit(ProductCubitLoading());
-    final result = await productRepo.getProducts();
-    result.fold(
-      (failure) => emit(ProductCubitError(message: failure.message)),
-      (products) {
-        final List<ProductEntity> entities = products
-            .map((product) => product.toEntity())
-            .toList();
-        productLength = entities.length;
-        emit(ProductCubitSuccess(entities));
-      },
-    );
+
+    try {
+      final result = await productRepo.getProducts();
+      print('Repository result: $result');
+
+      result.fold(
+        (failure) {
+          print('Failure: ${failure.message}');
+          emit(ProductCubitError(message: failure.message));
+        },
+        (products) {
+          print('Success: ${products.length} products received');
+
+          final List<ProductEntity> entities = products
+              .map((product) => product.toEntity())
+              .toList();
+
+          productLength = entities.length;
+          print('Converted to ${entities.length} entities');
+
+          if (entities.isEmpty) {
+            emit(ProductCubitError(message: 'لا توجد منتجات متاحة'));
+          } else {
+            emit(ProductCubitSuccess(entities));
+          }
+        },
+      );
+    } catch (e) {
+      print('Unexpected error in fetchAllProducts: $e');
+      emit(ProductCubitError(message: 'حدث خطأ غير متوقع: $e'));
+    }
   }
 
   Future<void> fetchBestSellingProducts() async {
+    print('Starting fetchBestSellingProducts...');
     emit(ProductCubitLoading());
-    final result = await productRepo.getBestSellingProducts();
-    result.fold(
-      (failure) => emit(ProductCubitError(message: failure.message)),
-      (products) {
-        final List<ProductEntity> entities = products
-            .map((product) => product.toEntity())
-            .toList();
-        productLength = entities.length;
-        emit(ProductCubitSuccess(entities));
-      },
-    );
+
+    try {
+      final result = await productRepo.getBestSellingProducts();
+      print('Repository result: $result');
+
+      result.fold(
+        (failure) {
+          print('Failure: ${failure.message}');
+          emit(ProductCubitError(message: failure.message));
+        },
+        (products) {
+          print('Success: ${products.length} best selling products received');
+
+          final List<ProductEntity> entities = products
+              .map((product) => product.toEntity())
+              .toList();
+
+          productLength = entities.length;
+          print('Converted to ${entities.length} entities');
+
+          if (entities.isEmpty) {
+            emit(ProductCubitError(message: 'لا توجد منتجات مميزة متاحة'));
+          } else {
+            emit(ProductCubitSuccess(entities));
+          }
+        },
+      );
+    } catch (e) {
+      print('Unexpected error in fetchBestSellingProducts: $e');
+      emit(ProductCubitError(message: 'حدث خطأ غير متوقع: $e'));
+    }
+  }
+
+  // إعادة تحميل البيانات
+  Future<void> refreshProducts({bool isBestSelling = false}) async {
+    if (isBestSelling) {
+      await fetchBestSellingProducts();
+    } else {
+      await fetchAllProducts();
+    }
   }
 }

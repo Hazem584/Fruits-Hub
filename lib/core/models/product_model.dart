@@ -1,5 +1,4 @@
 import 'package:fruits_e_commerce/core/entities/review_entity.dart';
-import 'package:fruits_e_commerce/core/helper/get_avg_rating.dart';
 import 'package:fruits_e_commerce/core/models/review_model.dart';
 import 'package:fruits_e_commerce/core/entities/product_entity.dart';
 

@@ -18,8 +18,9 @@ class HomeVIewBody extends StatefulWidget {
 class _HomeVIewBodyState extends State<HomeVIewBody> {
   @override
   void initState() {
-    context.read<ProductCubit>().fetchBestSellingProducts();
     super.initState();
+    print("🏠 HomeView initState - calling fetchBestSellingProducts");
+    context.read<ProductCubit>().fetchBestSellingProducts();
   }
 
   @override

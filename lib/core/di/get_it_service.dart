@@ -12,13 +12,17 @@ final getIt = GetIt.instance;
 void setupGetit() {
   getIt.registerSingleton<FirebaseAuthServices>(FirebaseAuthServices());
   getIt.registerSingleton<DatabaseService>(FirestoreService());
+
+  // تسجيل ProductRepo
+  getIt.registerSingleton<ProductRepo>(
+    ProductRepoImpl(databaseService: getIt.get<DatabaseService>()),
+  );
+
+  print("🔧 GetIt services registered successfully");
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImp(
       firebaseAuthServices: getIt<FirebaseAuthServices>(),
       databaseService: getIt<DatabaseService>(),
     ),
-  );
-  getIt.registerSingleton<ProductRepo>(
-    ProductRepoImpl(databaseService: getIt<DatabaseService>()),
   );
 }

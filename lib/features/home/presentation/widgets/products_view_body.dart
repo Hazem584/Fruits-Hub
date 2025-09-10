@@ -18,8 +18,9 @@ class ProductsViewBody extends StatefulWidget {
 class _ProductsViewBodyState extends State<ProductsViewBody> {
   @override
   void initState() {
-    context.read<ProductCubit>().fetchAllProducts();
     super.initState();
+    print("🛒 ProductsView initState - calling fetchAllProducts");
+    context.read<ProductCubit>().fetchAllProducts();
   }
 
   @override

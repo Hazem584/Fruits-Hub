@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -17,6 +18,17 @@ void main() async {
   Bloc.observer = CustomBlocObserver();
   await Prefs.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  print("🚀 Firebase initialized successfully");
+  try {
+    final firestore = FirebaseFirestore.instance;
+    final testQuery = await firestore.collection('products').limit(1).get();
+    print("🔥 Firebase Test: Found ${testQuery.docs.length} documents");
+    if (testQuery.docs.isNotEmpty) {
+      print("📄 Sample doc: ${testQuery.docs.first.data()}");
+    }
+  } catch (e) {
+    print("❌ Firebase Test Error: $e");
+  }
   setupGetit();
   await ScreenUtil.ensureScreenSize();
   runApp(const FruitHub());
