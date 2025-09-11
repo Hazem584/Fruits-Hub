@@ -9,4 +9,4 @@ final class CartItemAdded extends CartState {}
 
 final class CartItemRemoved extends CartState {}
 
-final class CartItemUpdated extends CartState {}
+final class CartItemUpdated extends CartState {} // إضافة state جديد

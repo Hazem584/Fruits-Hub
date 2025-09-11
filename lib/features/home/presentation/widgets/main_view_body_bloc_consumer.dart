@@ -19,6 +19,13 @@ class MainViewBodyBlocConsumer extends StatelessWidget {
               duration: const Duration(seconds: 1),
             ),
           );
+        } else if (state is CartItemRemoved) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("تم حذف المنتج من السلة"),
+              duration: Duration(seconds: 1),
+            ),
+          );
         }
       },
       child: MainViewBody(currentViewIndex: currentViewIndex),

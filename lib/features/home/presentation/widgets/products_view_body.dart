@@ -5,7 +5,6 @@ import 'package:fruits_e_commerce/core/helper/spacing.dart';
 import 'package:fruits_e_commerce/core/widgets/build_app_bar.dart';
 import 'package:fruits_e_commerce/core/widgets/search_text_field.dart';
 import 'package:fruits_e_commerce/features/home/presentation/widgets/product_grid_view_bloc_builder.dart';
-import 'package:fruits_e_commerce/features/home/presentation/widgets/custom_home_app_bar.dart';
 import 'package:fruits_e_commerce/features/home/presentation/widgets/products_header.dart';
 
 class ProductsViewBody extends StatefulWidget {

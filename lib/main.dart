@@ -15,6 +15,7 @@ import 'package:fruits_e_commerce/generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await ScreenUtil.ensureScreenSize();
   Bloc.observer = CustomBlocObserver();
   await Prefs.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -30,7 +31,6 @@ void main() async {
     print("❌ Firebase Test Error: $e");
   }
   setupGetit();
-  await ScreenUtil.ensureScreenSize();
   runApp(const FruitHub());
 }
 
