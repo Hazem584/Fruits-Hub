@@ -11,7 +11,7 @@ class CustomHomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = getUser();
     return ListTile(
-      trailing: NotificationsWidget(),
+      trailing: const NotificationsWidget(),
       leading: Image.asset(Assets.assetsImagesAvatarImage),
       title: Text(
         "صباح الخير !..",

@@ -30,18 +30,18 @@ class _HomeVIewBodyState extends State<HomeVIewBody> {
         SliverToBoxAdapter(
           child: Column(
             children: [
-              CustomHomeAppBar(),
+              const CustomHomeAppBar(),
               verticalSpace(20),
-              SearchTextField(),
+              const SearchTextField(),
               verticalSpace(12),
-              FeaturedList(),
+              const FeaturedList(),
               verticalSpace(14),
-              BestSellingHeader(),
+              const BestSellingHeader(),
               verticalSpace(12),
             ],
           ),
         ),
-        ProductGridViewBlocBuilder(),
+        const ProductGridViewBlocBuilder(),
       ],
     );
   }

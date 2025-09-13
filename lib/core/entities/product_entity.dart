@@ -17,7 +17,7 @@ class ProductEntity extends Equatable {
   final num ratingCounts;
   final List<ReviewEntity> reviews;
 
-  ProductEntity({
+  const ProductEntity({
     required this.name,
     required this.description,
     required this.price,

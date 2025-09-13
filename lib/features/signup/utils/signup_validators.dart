@@ -26,7 +26,7 @@ class SignupValidators {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          title: Row(
+          title: const Row(
             children: [
               Icon(Icons.warning, color: Colors.orange, size: 24),
               SizedBox(width: 8),
@@ -40,7 +40,7 @@ class SignupValidators {
               ),
             ],
           ),
-          content: Text(
+          content: const Text(
             'يرجى الموافقة على الشروط والأحكام للمتابعة',
             style: TextStyle(fontSize: 16),
           ),
@@ -49,7 +49,7 @@ class SignupValidators {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(
+              child: const Text(
                 'حسناً',
                 style: TextStyle(
                   color: AppColors.primaryColor,
@@ -68,14 +68,14 @@ class SignupValidators {
   static void showTermsErrorSnackBar(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(
+        content: const Text(
           'يرجى الموافقة على الشروط والأحكام للمتابعة',
           style: TextStyle(fontSize: 16, color: Colors.white),
         ),
         backgroundColor: Colors.red,
-        duration: Duration(seconds: 3),
+        duration: const Duration(seconds: 3),
         behavior: SnackBarBehavior.floating,
-        margin: EdgeInsets.all(16),
+        margin: const EdgeInsets.all(16),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
     );

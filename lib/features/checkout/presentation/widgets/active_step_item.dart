@@ -11,7 +11,7 @@ class ActiveStepItem extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           radius: 13,
           backgroundColor: AppColors.primaryColor,
           child: Icon(Icons.check, color: Colors.white, size: 22),

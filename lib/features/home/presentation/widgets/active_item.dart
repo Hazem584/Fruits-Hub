@@ -16,7 +16,7 @@ class ActiveItem extends StatelessWidget {
       curve: Curves.easeInOut,
       padding: EdgeInsets.only(left: 12.w),
       decoration: ShapeDecoration(
-        color: Color(0xffEEF8ED),
+        color: const Color(0xffEEF8ED),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
       child: Row(
@@ -29,7 +29,7 @@ class ActiveItem extends StatelessWidget {
             width: 30.w,
             height: 30.h,
             decoration: ShapeDecoration(
-              color: Color(0xff1b5e37),
+              color: const Color(0xff1b5e37),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),

@@ -32,7 +32,7 @@ class FeaturedItem extends StatelessWidget {
               Container(
                 width: itemWidth * 0.5,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: Svg(Assets.assetsImagesHomeShape),
                     fit: BoxFit.fill,
                   ),
@@ -43,12 +43,12 @@ class FeaturedItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Spacer(),
+                      const Spacer(),
                       Text("عروض العيد", style: TextStyles.font13WhiteNormal),
                       verticalSpace(10),
                       Text("خصم 25%", style: TextStyles.font19WhiteBold),
-                      Spacer(),
-                      FeaturedItemButton(),
+                      const Spacer(),
+                      const FeaturedItemButton(),
                       verticalSpace(24),
                     ],
                   ),

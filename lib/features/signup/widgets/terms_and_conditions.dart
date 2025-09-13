@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce/core/helper/spacing.dart';
 import 'package:fruits_e_commerce/core/theming/app_colors.dart';
 import 'package:fruits_e_commerce/core/theming/styles.dart';
 import 'package:fruits_e_commerce/features/signup/widgets/custom_check_box.dart';
@@ -18,7 +19,7 @@ class TermsAndConditionsWithCallback extends StatelessWidget {
     return Row(
       children: [
         CustomCheckBox(value: isAccepted, onChanged: onChanged),
-        SizedBox(width: 8),
+        horizontalSpace(8),
         Expanded(
           child: Text.rich(
             TextSpan(

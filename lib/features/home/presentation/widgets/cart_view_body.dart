@@ -26,14 +26,14 @@ class CartViewBody extends StatelessWidget {
                     showNotification: false,
                   ),
                   verticalSpace(20),
-                  CartHeader(),
+                  const CartHeader(),
                 ],
               ),
             ),
             SliverToBoxAdapter(
               child: context.read<CartCubit>().cart.cartItems.isEmpty
-                  ? SizedBox()
-                  : Divider(color: Color(0xfff1f1f5), thickness: 1, height: 22),
+                  ? const SizedBox()
+                  : const Divider(color: Color(0xfff1f1f5), thickness: 1, height: 22),
             ),
             CartItemsList(cartItems: context.watch<CartCubit>().cart.cartItems),
           ],
@@ -42,7 +42,7 @@ class CartViewBody extends StatelessWidget {
           right: 16,
           left: 16,
           bottom: MediaQuery.sizeOf(context).height * 0.05,
-          child: CustomCartButton(),
+          child: const CustomCartButton(),
         ),
       ],
     );

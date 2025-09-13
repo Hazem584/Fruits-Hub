@@ -14,7 +14,7 @@ class ProductsView extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           ProductCubit(getIt.get<ProductRepo>())..fetchAllProducts(),
-      child: ProductsViewBody(),
+      child: const ProductsViewBody(),
     );
   }
 }

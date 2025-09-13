@@ -31,7 +31,7 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
             children: [
               BuildAppBar(context, title: 'المنتجات', showBackButton: false),
               verticalSpace(20),
-              SearchTextField(),
+              const SearchTextField(),
               verticalSpace(12),
               ProductsHeader(
                 productLength: context.watch<ProductCubit>().productLength,
@@ -40,7 +40,7 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
             ],
           ),
         ),
-        ProductGridViewBlocBuilder(),
+        const ProductGridViewBlocBuilder(),
       ],
     );
   }

@@ -14,7 +14,7 @@ AppBar BuildAppBar(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Visibility(
           visible: showNotification,
-          child: NotificationsWidget(),
+          child: const NotificationsWidget(),
         ),
       ),
     ],

@@ -62,7 +62,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             buttonWidth: 300.w,
             buttonHeight: 65.h,
             buttonText: "ابدأ الان",
-            textStyle: TextStyle(color: Colors.white),
+            textStyle: const TextStyle(color: Colors.white),
             onPressed: () {
               Prefs.setBool(KIsOnBoardingViewSeen, true);
               Navigator.pushReplacementNamed(context, LoginView.routeName);

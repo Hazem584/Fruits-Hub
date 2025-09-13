@@ -23,7 +23,7 @@ class FruitItem extends StatelessWidget {
           Positioned(
             top: 8.h,
             right: 8.w,
-            child: Icon(Icons.favorite_border_outlined),
+            child: const Icon(Icons.favorite_border_outlined),
           ),
           Padding(
             padding: EdgeInsets.all(8.w),
@@ -70,7 +70,7 @@ class FruitItem extends StatelessWidget {
                                 productEntity,
                               );
                             },
-                            child: CircleAvatar(
+                            child: const CircleAvatar(
                               backgroundColor: AppColors.primaryColor,
                               child: Icon(Icons.add, color: Colors.white),
                             ),

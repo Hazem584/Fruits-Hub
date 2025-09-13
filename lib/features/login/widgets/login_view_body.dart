@@ -41,7 +41,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 email = value!;
               },
               hintText: 'البريد الإلكتروني',
-              backgroundColor: Color(0xFFF9FAFA),
+              backgroundColor: const Color(0xFFF9FAFA),
               hintStyle: TextStyles.font13lighterGrayBold,
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(4),
@@ -76,7 +76,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 ),
               ),
               hintText: 'كلمة المرور',
-              backgroundColor: Color(0xFFF9FAFA),
+              backgroundColor: const Color(0xFFF9FAFA),
               hintStyle: TextStyles.font13lighterGrayBold,
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(4),

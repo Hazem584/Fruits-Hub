@@ -23,7 +23,7 @@ class LoginViewBodyBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         return CustomProgressHud(
           isLoading: state is LoginLoading ? true : false,
-          child: LoginViewBody(),
+          child: const LoginViewBody(),
         );
       },
     );

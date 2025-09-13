@@ -38,7 +38,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
                       MediaQuery.of(context).padding.top -
                       kToolbarHeight,
                 ),
-                child: SignupViewBody(),
+                child: const SignupViewBody(),
               ),
             ),
           ),

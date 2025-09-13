@@ -18,7 +18,7 @@ class ProductGridViewBlocBuilder extends StatelessWidget {
         if (state is ProductCubitSuccess) {
           print("✅ Success: ${state.products.length} products");
           if (state.products.isEmpty) {
-            return SliverToBoxAdapter(
+            return const SliverToBoxAdapter(
               child: Center(child: Text('لا توجد منتجات')),
             );
           }
@@ -32,7 +32,7 @@ class ProductGridViewBlocBuilder extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () =>
                       context.read<ProductCubit>().fetchAllProducts(),
-                  child: Text('إعادة المحاولة'),
+                  child: const Text('إعادة المحاولة'),
                 ),
               ],
             ),

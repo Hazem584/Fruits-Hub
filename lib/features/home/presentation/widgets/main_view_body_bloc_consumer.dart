@@ -14,14 +14,14 @@ class MainViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is CartItemAdded) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text('تم إضافة المنتج إلى السلة'),
-              duration: const Duration(seconds: 1),
+              duration: Duration(seconds: 1),
             ),
           );
         } else if (state is CartItemRemoved) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text("تم حذف المنتج من السلة"),
               duration: Duration(seconds: 1),
             ),

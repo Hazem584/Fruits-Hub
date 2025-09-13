@@ -20,13 +20,13 @@ class SocialLoginButton extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
-            side: BorderSide(color: Color(0xFFDCDEDE), width: 1),
+            side: const BorderSide(color: Color(0xFFDCDEDE), width: 1),
             borderRadius: BorderRadiusGeometry.circular(20),
           ),
         ),
         onPressed: onPressed,
         child: ListTile(
-          visualDensity: VisualDensity(vertical: VisualDensity.minimumDensity),
+          visualDensity: const VisualDensity(vertical: VisualDensity.minimumDensity),
           leading: SvgPicture.asset(image),
           title: label,
         ),

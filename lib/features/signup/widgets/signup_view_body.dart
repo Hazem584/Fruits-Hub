@@ -41,7 +41,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 name = value!;
               },
               hintText: "الاسم كامل",
-              backgroundColor: Color(0xFFF9FAFA),
+              backgroundColor: const Color(0xFFF9FAFA),
               hintStyle: TextStyles.font13lighterGrayBold,
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(4),
@@ -64,7 +64,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 email = value!;
               },
               hintText: 'البريد الإلكتروني',
-              backgroundColor: Color(0xFFF9FAFA),
+              backgroundColor: const Color(0xFFF9FAFA),
               hintStyle: TextStyles.font13lighterGrayBold,
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(4),
@@ -99,7 +99,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 ),
               ),
               hintText: 'كلمة المرور',
-              backgroundColor: Color(0xFFF9FAFA),
+              backgroundColor: const Color(0xFFF9FAFA),
               hintStyle: TextStyles.font13lighterGrayBold,
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(4),
@@ -158,7 +158,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               },
             ),
             verticalSpace(20),
-            AlreadyHaveAnAccount(),
+            const AlreadyHaveAnAccount(),
             verticalSpace(20),
           ],
         ),

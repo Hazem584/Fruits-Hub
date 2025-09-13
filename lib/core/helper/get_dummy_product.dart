@@ -23,14 +23,14 @@ ProductEntity getProductEntity() {
         image: "https://example.com/images/user1.jpg",
         rating: 4.5,
         reviewDescription: "Delicious and fresh apples! Highly recommend.",
-        date: DateTime.now().subtract(Duration(days: 2)),
+        date: DateTime.now().subtract(const Duration(days: 2)),
       ),
       ReviewEntity(
         name: "Jane Smith",
         image: "https://example.com/images/user2.jpg",
         rating: 4.0,
         reviewDescription: "Good quality apples, but a bit pricey.",
-        date: DateTime.now().subtract(Duration(days: 5)),
+        date: DateTime.now().subtract(const Duration(days: 5)),
       ),
     ],
   );

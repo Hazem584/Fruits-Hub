@@ -27,7 +27,7 @@ class ProductsHeader extends StatelessWidget {
               decoration: ShapeDecoration(
                 color: Colors.white.withOpacity(0.1),
                 shape: RoundedRectangleBorder(
-                  side: BorderSide(width: 1, color: Color(0x66cacece)),
+                  side: const BorderSide(width: 1, color: Color(0x66cacece)),
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),

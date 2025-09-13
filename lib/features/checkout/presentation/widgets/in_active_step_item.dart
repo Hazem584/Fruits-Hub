@@ -13,7 +13,7 @@ class InActiveStepItem extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 13,
-          backgroundColor: Color(0xfff2f3f3),
+          backgroundColor: const Color(0xfff2f3f3),
           child: Text(index, style: TextStyles.font13BlackSemiBold),
         ),
         horizontalSpace(4),

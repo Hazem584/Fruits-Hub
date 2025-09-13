@@ -17,7 +17,7 @@ class AppTextFormFiled extends StatelessWidget {
   final TextEditingController? controller;
   final Function(String?)? validator;
   final void Function(String?)? onSaved;
-
+  final TextInputType? keyboardType;
   const AppTextFormFiled({
     super.key,
     this.contentPadding,
@@ -32,6 +32,7 @@ class AppTextFormFiled extends StatelessWidget {
     this.controller,
     this.validator,
     this.onSaved,
+    this.keyboardType,
   });
 
   @override
@@ -39,6 +40,7 @@ class AppTextFormFiled extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: TextFormField(
+        keyboardType: keyboardType,
         onSaved: onSaved,
         controller: controller,
         decoration: InputDecoration(
