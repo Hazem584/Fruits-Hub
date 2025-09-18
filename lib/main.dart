@@ -19,16 +19,12 @@ void main() async {
   Bloc.observer = CustomBlocObserver();
   await Prefs.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  print("🚀 Firebase initialized successfully");
   try {
     final firestore = FirebaseFirestore.instance;
     final testQuery = await firestore.collection('products').limit(1).get();
-    print("🔥 Firebase Test: Found ${testQuery.docs.length} documents");
-    if (testQuery.docs.isNotEmpty) {
-      print("📄 Sample doc: ${testQuery.docs.first.data()}");
-    }
+    if (testQuery.docs.isNotEmpty) {}
   } catch (e) {
-    print("❌ Firebase Test Error: $e");
+    print(e);
   }
   setupGetit();
   runApp(const FruitHub());

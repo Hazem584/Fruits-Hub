@@ -107,13 +107,13 @@ class TextStyles {
     color: AppColors.orange,
     fontFamily: 'Cairo',
   );
-    static TextStyle font11PrimaryColorBold = TextStyle(
+  static TextStyle font11PrimaryColorBold = TextStyle(
     fontSize: 11.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.primaryColor,
     fontFamily: 'Cairo',
   );
-    static TextStyle font19SemiBlackBold = TextStyle(
+  static TextStyle font19SemiBlackBold = TextStyle(
     fontSize: 19.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: AppColors.black,

@@ -9,14 +9,14 @@ import 'package:fruits_e_commerce/features/signup/widgets/signup_view_body_bloc_
 class SignupView extends StatelessWidget {
   const SignupView({super.key});
   static const routeName = '/signup';
-  
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => SignupCubit(getIt<AuthRepo>()),
       child: Scaffold(
         appBar: buildAppBar(context: context, title: "حساب جديد"),
-        body: const SignupViewBodyBlocConsumer(), 
+        body: const SignupViewBodyBlocConsumer(),
       ),
     );
   }

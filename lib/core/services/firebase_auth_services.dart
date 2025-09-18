@@ -8,7 +8,7 @@ class FirebaseAuthServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
 
-  Future DeleteUser() async {
+  Future deleteUser() async {
     await FirebaseAuth.instance.currentUser!.delete();
   }
 

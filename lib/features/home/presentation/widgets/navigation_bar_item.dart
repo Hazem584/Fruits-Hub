@@ -11,7 +11,7 @@ class NavigationBarItem extends StatelessWidget {
   });
   final bool isSelected;
   final BottomNavigationBarEntity bottomNavigationBarEntity;
-  
+
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
@@ -19,10 +19,7 @@ class NavigationBarItem extends StatelessWidget {
       transitionBuilder: (child, animation) {
         return ScaleTransition(
           scale: animation,
-          child: FadeTransition(
-            opacity: animation,
-            child: child,
-          ),
+          child: FadeTransition(opacity: animation, child: child),
         );
       },
       child: isSelected

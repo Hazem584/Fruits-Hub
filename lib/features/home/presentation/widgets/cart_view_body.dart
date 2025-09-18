@@ -33,7 +33,11 @@ class CartViewBody extends StatelessWidget {
             SliverToBoxAdapter(
               child: context.read<CartCubit>().cart.cartItems.isEmpty
                   ? const SizedBox()
-                  : const Divider(color: Color(0xfff1f1f5), thickness: 1, height: 22),
+                  : const Divider(
+                      color: Color(0xfff1f1f5),
+                      thickness: 1,
+                      height: 22,
+                    ),
             ),
             CartItemsList(cartItems: context.watch<CartCubit>().cart.cartItems),
           ],

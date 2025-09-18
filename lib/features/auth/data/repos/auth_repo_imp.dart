@@ -51,7 +51,7 @@ class AuthRepoImp extends AuthRepo {
 
   Future<void> deleteUser(User? user) async {
     if (user != null) {
-      await firebaseAuthServices.DeleteUser();
+      await firebaseAuthServices.deleteUser();
     }
   }
 

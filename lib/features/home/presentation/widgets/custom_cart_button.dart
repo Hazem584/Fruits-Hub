@@ -20,7 +20,20 @@ class CustomCartButton extends StatelessWidget {
                   "الدفع  ${context.watch<CartCubit>().cart.calculateTotalPrice()} جنيه",
               textStyle: TextStyles.font15WhiteBold,
               onPressed: () {
-                Navigator.pushNamed(context, CheckoutView.routeName);
+                if (context.read<CartCubit>().cart.cartItems.isNotEmpty) {
+                  Navigator.pushNamed(
+                    context,
+                    CheckoutView.routeName,
+                    arguments: context.read<CartCubit>().cart,
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("لا يوجد منتجات في السلة"),
+                      duration: Duration(seconds: 1),
+                    ),
+                  );
+                }
               },
             );
           },

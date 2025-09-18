@@ -4,9 +4,7 @@ import 'package:fruits_e_commerce/core/theming/styles.dart';
 import 'package:fruits_e_commerce/features/login/ui/login_view.dart';
 
 class AlreadyHaveAnAccount extends StatelessWidget {
-  const AlreadyHaveAnAccount({
-    super.key,
-  });
+  const AlreadyHaveAnAccount({super.key});
 
   @override
   Widget build(BuildContext context) {
