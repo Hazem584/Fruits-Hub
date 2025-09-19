@@ -9,7 +9,7 @@ class ShippingSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<OrderEntity>(
+    return Consumer<OrderInputEntity>(
       builder: (context, orderEntity, child) {
         return Column(
           children: [

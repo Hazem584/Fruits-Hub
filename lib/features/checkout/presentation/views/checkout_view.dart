@@ -20,7 +20,7 @@ class CheckoutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => OrderEntity(
+      create: (context) => OrderInputEntity(
         uID: getUser()!.uId,
         cartEntity,
         shippingAddress: ShippingAddressEntity(),

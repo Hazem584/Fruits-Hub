@@ -10,7 +10,7 @@ class OrderSummaryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<OrderEntity>(
+    return Consumer<OrderInputEntity>(
       builder: (context, orderEntity, child) {
         final totalPrice = orderEntity.cartEntity.calculateTotalPrice();
         const deliveryFee = 30;

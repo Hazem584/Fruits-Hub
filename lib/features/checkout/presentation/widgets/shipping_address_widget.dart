@@ -14,7 +14,7 @@ class ShippingAddressWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<OrderEntity>(
+    return Consumer<OrderInputEntity>(
       builder: (context, orderEntity, child) {
         String addressText = "شارع النيل، مبنى رقم ١٢٣";
         if (orderEntity.shippingAddress.address?.isNotEmpty == true) {

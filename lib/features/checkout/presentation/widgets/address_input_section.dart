@@ -28,7 +28,8 @@ class AddressInputSection extends StatelessWidget {
               verticalSpace(24),
               AppTextFormFiled(
                 onSaved: (value) {
-                  context.read<OrderEntity>().shippingAddress.name = value!;
+                  context.read<OrderInputEntity>().shippingAddress.name =
+                      value!;
                 },
                 hintText: "الاسم الكامل",
                 inputTextStyle: TextStyles.font16BlackBold,
@@ -37,7 +38,8 @@ class AddressInputSection extends StatelessWidget {
               verticalSpace(10),
               AppTextFormFiled(
                 onSaved: (value) {
-                  context.read<OrderEntity>().shippingAddress.phone = value!;
+                  context.read<OrderInputEntity>().shippingAddress.phone =
+                      value!;
                 },
                 hintText: "رقم الهاتف",
                 inputTextStyle: TextStyles.font16BlackBold,
@@ -46,7 +48,8 @@ class AddressInputSection extends StatelessWidget {
               verticalSpace(10),
               AppTextFormFiled(
                 onSaved: (value) {
-                  context.read<OrderEntity>().shippingAddress.email = value!;
+                  context.read<OrderInputEntity>().shippingAddress.email =
+                      value!;
                 },
                 hintText: "البريد الإلكتروني",
                 inputTextStyle: TextStyles.font16BlackBold,
@@ -55,7 +58,8 @@ class AddressInputSection extends StatelessWidget {
               verticalSpace(10),
               AppTextFormFiled(
                 onSaved: (value) {
-                  context.read<OrderEntity>().shippingAddress.address = value!;
+                  context.read<OrderInputEntity>().shippingAddress.address =
+                      value!;
                 },
                 hintText: "العنوان",
                 inputTextStyle: TextStyles.font16BlackBold,
@@ -64,7 +68,8 @@ class AddressInputSection extends StatelessWidget {
               verticalSpace(10),
               AppTextFormFiled(
                 onSaved: (value) {
-                  context.read<OrderEntity>().shippingAddress.city = value!;
+                  context.read<OrderInputEntity>().shippingAddress.city =
+                      value!;
                 },
                 hintText: "المدينه",
                 inputTextStyle: TextStyles.font16BlackBold,
@@ -73,7 +78,10 @@ class AddressInputSection extends StatelessWidget {
               verticalSpace(10),
               AppTextFormFiled(
                 onSaved: (value) {
-                  context.read<OrderEntity>().shippingAddress.addressDetails =
+                  context
+                          .read<OrderInputEntity>()
+                          .shippingAddress
+                          .addressDetails =
                       value!;
                 },
                 hintText: "رقم الطابق , رقم الشقه ..",

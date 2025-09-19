@@ -10,7 +10,7 @@ class PaymentPaypalEntities {
 
   PaymentPaypalEntities({this.amount, this.description, this.itemList});
 
-  PaymentPaypalEntities.fromEntity(OrderEntity entity) {
+  PaymentPaypalEntities.fromEntity(OrderInputEntity entity) {
     amount = Amount.fromEntity(entity);
     description = "The payment transaction description.";
     itemList = ItemList.fromEntity(items: entity.cartEntity.cartItems);

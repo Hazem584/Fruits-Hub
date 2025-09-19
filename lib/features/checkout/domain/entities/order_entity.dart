@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce/features/checkout/domain/entities/shipping_address_entity.dart';
 import 'package:fruits_e_commerce/features/home/domain/entities/cart_entity.dart';
 
-class OrderEntity extends ChangeNotifier {
+class OrderInputEntity extends ChangeNotifier {
   final CartEntity cartEntity;
   bool? _payWithCash;
   ShippingAddressEntity shippingAddress;
   final String uID;
 
-  OrderEntity(
+  OrderInputEntity(
     this.cartEntity, {
     bool? payWithCash,
     required this.shippingAddress,
@@ -61,5 +61,4 @@ class OrderEntity extends ChangeNotifier {
     }
     return total + calculateShippingCost() - calculateShippingDiscount();
   }
-
 }
